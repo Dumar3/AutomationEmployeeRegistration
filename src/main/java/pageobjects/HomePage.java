@@ -40,4 +40,10 @@ public class HomePage {
         lblLogueoSatisfactorio.getText().equals("Signed in successfully."));
   }
 
+  public void seleccionarNuevoRegistroEmpleado(){
+    WebElement lnkNuevoRegistro = driver
+        .findElement(By.cssSelector("#content > p > a[href='/employees/new']"));
+    lnkNuevoRegistro.click();
+  }
+
 }

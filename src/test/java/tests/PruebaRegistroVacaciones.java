@@ -1,15 +1,15 @@
 package tests;
 
-import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pageobjects.CreacionUsuarioPage;
 import pageobjects.HomePage;
 import pageobjects.LoginPage;
 
-public class pruebaRegistroVacaciones {
+public class PruebaRegistroVacaciones {
 
   private WebDriver driver;
   HomePage homePage;
@@ -26,6 +26,8 @@ public class pruebaRegistroVacaciones {
     homePage = new HomePage(driver);
     iniciarSesion();
     verificarLogueo();
+    homePage.seleccionarNuevoRegistroEmpleado();
+    crearUsuario();
   }
 
   private void iniciarSesion() {
@@ -39,6 +41,17 @@ public class pruebaRegistroVacaciones {
     homePage.verificarLogo();
     homePage.verificarUsuarioLogueado();
     homePage.verificarLogueoSatisfactorio();
+  }
+
+  private void crearUsuario() {
+    CreacionUsuarioPage creacionUsuarioPage = new CreacionUsuarioPage(driver);
+    creacionUsuarioPage.ingresarNombreEmpleado("James");
+    creacionUsuarioPage.ingresarApellidoEmpleado("Smith");
+    creacionUsuarioPage.ingresarCorreoElectronicoEmpleado("jsmith@gap.com.co");
+    creacionUsuarioPage.ingresarIdentificacionEmpleado("1234567890");
+    creacionUsuarioPage.ingresarNombreLider("Dumar");
+    creacionUsuarioPage.ingresarFechaIngreso("2014", 1, "21");
+    creacionUsuarioPage.crearRegistroEmpleado();
   }
 
   @After
