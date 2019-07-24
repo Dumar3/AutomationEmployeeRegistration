@@ -43,14 +43,20 @@ public class CreacionUsuarioPage {
     Select selMes = new Select(driver.findElement(By.id("employee_start_working_on_2i")));
     Select selDia = new Select(driver.findElement(By.id("employee_start_working_on_3i")));
     selAno.selectByVisibleText(ano);
-    selMes.selectByIndex(mes-1);
+    selMes.selectByIndex(mes - 1);
     selDia.selectByVisibleText(dia);
   }
 
-  public void crearRegistroEmpleado(){
+  public void crearRegistroEmpleado() {
     WebElement btnCrearEmpleado = driver
         .findElement(By.cssSelector("#new_employee > div.actions > input[type=submit]"));
     btnCrearEmpleado.click();
+  }
+
+  public void regresarListaEmpleados() {
+    WebElement btnInformacionEmpleados = driver
+        .findElement(By.cssSelector("#menu > li.selected > a[href='/employees']"));
+    btnInformacionEmpleados.click();
   }
 
 }

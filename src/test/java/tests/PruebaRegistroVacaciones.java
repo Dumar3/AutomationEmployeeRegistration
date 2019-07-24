@@ -1,5 +1,7 @@
 package tests;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,12 +9,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pageobjects.CreacionUsuarioPage;
 import pageobjects.HomePage;
+import pageobjects.ListaUsuariosPage;
 import pageobjects.LoginPage;
 
 public class PruebaRegistroVacaciones {
 
   private WebDriver driver;
-  HomePage homePage;
+  private HomePage homePage;
+  private CreacionUsuarioPage creacionUsuarioPage;
 
   @Before
   public void abrirPaginaVacaciones() {
@@ -24,10 +28,13 @@ public class PruebaRegistroVacaciones {
   @Test
   public void probarRegistroVacaciones() {
     homePage = new HomePage(driver);
+    creacionUsuarioPage = new CreacionUsuarioPage(driver);
     iniciarSesion();
     verificarLogueo();
     homePage.seleccionarNuevoRegistroEmpleado();
     crearUsuario();
+    creacionUsuarioPage.regresarListaEmpleados();
+    validarUsuarioCreado();
   }
 
   private void iniciarSesion() {
@@ -44,7 +51,6 @@ public class PruebaRegistroVacaciones {
   }
 
   private void crearUsuario() {
-    CreacionUsuarioPage creacionUsuarioPage = new CreacionUsuarioPage(driver);
     creacionUsuarioPage.ingresarNombreEmpleado("James");
     creacionUsuarioPage.ingresarApellidoEmpleado("Smith");
     creacionUsuarioPage.ingresarCorreoElectronicoEmpleado("jsmith@gap.com.co");
@@ -52,6 +58,16 @@ public class PruebaRegistroVacaciones {
     creacionUsuarioPage.ingresarNombreLider("Dumar");
     creacionUsuarioPage.ingresarFechaIngreso("2014", 1, "21");
     creacionUsuarioPage.crearRegistroEmpleado();
+  }
+
+  private void validarUsuarioCreado(){
+    ListaUsuariosPage listaUsuariosPage = new ListaUsuariosPage(driver);
+    Map<String, String> mapUsuario = new HashMap<>();
+    mapUsuario.put("nombreEmpleado", "James");
+    mapUsuario.put("apellidoEmpleado", "Smith");
+    mapUsuario.put("identificacionEmpleado", "1234567890");
+    mapUsuario.put("nombreLider", "Dumar");
+    listaUsuariosPage.validarUsuarioCreado(mapUsuario);
   }
 
   @After
