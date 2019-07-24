@@ -1,10 +1,10 @@
 package pageobjects;
 
 import java.util.Map;
-import org.hamcrest.MatcherAssert;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import utils.Utilidades;
 
 public class ListaUsuariosPage {
 
@@ -15,22 +15,13 @@ public class ListaUsuariosPage {
   }
 
   public void validarUsuarioCreado(Map<String, String> mapUsuario) {
-    boolean empleadoRegistrado = true;
-    WebElement tablaEmpleados = driver.findElement(By.xpath("//div[@id='content']/table/tbody"));
-    WebElement lblNombreEmpleado = tablaEmpleados
-        .findElement(By.xpath("./tr/td[text()='" + mapUsuario.get("nombreEmpleado") + "']"));
-    WebElement lblApellidoEmpleado = tablaEmpleados
-        .findElement(By.xpath("./tr/td[text()='" + mapUsuario.get("apellidoEmpleado") + "']"));
-    WebElement lblIdentificacionEmpleado = tablaEmpleados
-        .findElement(
-            By.xpath("./tr/td[text()='" + mapUsuario.get("identificacionEmpleado") + "']"));
-    WebElement lblNombreLider = tablaEmpleados
-        .findElement(By.xpath("./tr/td[text()='" + mapUsuario.get("nombreLider") + "']"));
-    if (!lblNombreEmpleado.isDisplayed() || !lblApellidoEmpleado.isDisplayed()
-        || !lblIdentificacionEmpleado.isDisplayed() || !lblNombreLider.isDisplayed()) {
-      empleadoRegistrado = false;
-    }
-    MatcherAssert.assertThat("El empleado no se registró correctamente", empleadoRegistrado);
+    Utilidades utilidades = new Utilidades(driver);
+    Assert.assertTrue("El empleado no se registró correctamente", utilidades.verificarElementoPresente(By.xpath(
+        "//*[@id='content']/table/tbody/tr[td[1][normalize-space(text())='" + mapUsuario
+            .get("nombreEmpleado") + "'] and td[2][normalize-space(text())='" + mapUsuario
+            .get("apellidoEmpleado") + "'] and td[3][normalize-space(text())='" + mapUsuario
+            .get("identificacionEmpleado") + "'] and td[4][normalize-space(text())='" + mapUsuario
+            .get("nombreLider") + "']]")));
   }
 
 }

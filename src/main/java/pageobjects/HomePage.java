@@ -1,6 +1,6 @@
 package pageobjects;
 
-import org.hamcrest.MatcherAssert;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,30 +14,21 @@ public class HomePage {
   }
 
   public void verificarLogo() {
-    boolean logoVisible = false;
     WebElement imgLogo = driver.findElement(By.cssSelector("#logo"));
-    if (imgLogo.isDisplayed()) {
-      logoVisible = true;
-    }
-    MatcherAssert.assertThat("El logo no es visible", logoVisible);
+    Assert.assertTrue("El logo no es visible", imgLogo.isDisplayed());
   }
 
   public void verificarUsuarioLogueado() {
-    boolean usuarioLogueado = false;
     WebElement lblUsuarioLogueado = driver
         .findElement(By.cssSelector("#user_information > span:first-child"));
-    if (lblUsuarioLogueado.isDisplayed()) {
-      usuarioLogueado = true;
-    }
-    MatcherAssert
-        .assertThat("El usuario no está logueado", usuarioLogueado);
+    Assert.assertTrue("El usuario no está logueado", lblUsuarioLogueado.isDisplayed());
   }
 
   public void verificarLogueoSatisfactorio() {
     WebElement lblLogueoSatisfactorio = driver
         .findElement(By.cssSelector("#content > p.flash_notice"));
-    MatcherAssert.assertThat("El usuario no se logueó satisfactoriamente",
-        lblLogueoSatisfactorio.getText().equals("Signed in successfully."));
+    Assert.assertTrue("El usuario no se logueó satisfactoriamente",
+        lblLogueoSatisfactorio.getText().equalsIgnoreCase("Signed in successfully."));
   }
 
   public void seleccionarNuevoRegistroEmpleado(){

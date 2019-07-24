@@ -22,6 +22,7 @@ public class PruebaRegistroVacaciones {
   public void abrirPaginaVacaciones() {
     System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
     driver = new ChromeDriver();
+    driver.manage().window().maximize();
     driver.get("https://vacations-management.herokuapp.com/users/sign_in");
   }
 
