@@ -16,6 +16,5 @@ dependencies {
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '3.141.59'
     compile group: 'org.seleniumhq.webdriver', name: 'webdriver-selenium', version: '0.9.7376'
-
     testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
 }

@@ -1,18 +1,15 @@
-package pages;
+package pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginPage {
 
-  WebDriver driver = null;
+  private WebDriver driver;
 
-  public void abrirPaginaVacaciones(){
-    System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-    driver = new ChromeDriver();
-    driver.get("https://vacations-management.herokuapp.com/users/sign_in");
+  public LoginPage(WebDriver driver){
+    this.driver = driver;
   }
 
   public void escribirCorreoElectronico(String correoElectronico){
