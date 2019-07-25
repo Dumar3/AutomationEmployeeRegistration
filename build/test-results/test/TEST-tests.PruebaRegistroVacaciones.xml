@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="tests.PruebaRegistroVacaciones" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-07-25T04:32:04" hostname="DESKTOP-U93K9KF" time="12.505">
+  <properties/>
+  <testcase name="probarRegistroVacacionesEmpleado" classname="tests.PruebaRegistroVacaciones" time="12.505"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 75.0.3770.140 (2d9f97485c7b07dc18a74666574f19176731995c-refs/branch-heads/3770@{#1155}) on port 11600
+Only local connections are allowed.
+Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
+jul 24, 2019 11:32:10 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFORMACIÓN: Detected dialect: W3C
+]]></system-err>
+</testsuite>

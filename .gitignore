@@ -36,5 +36,4 @@ target/
 hooks/pre-push
 
 # Java
-build/
 out/
