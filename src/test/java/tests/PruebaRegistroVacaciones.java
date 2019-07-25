@@ -27,7 +27,7 @@ public class PruebaRegistroVacaciones {
   }
 
   @Test
-  public void probarRegistroVacaciones() {
+  public void probarRegistroVacacionesEmpleado() {
     homePage = new HomePage(driver);
     creacionUsuarioPage = new CreacionUsuarioPage(driver);
     iniciarSesion();
