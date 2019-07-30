@@ -17,10 +17,10 @@ public class ListaUsuariosPage {
   public void validarUsuarioCreado(Map<String, String> mapUsuario) {
     Utilidades utilidades = new Utilidades(driver);
     Assert.assertTrue("El empleado no se registró correctamente", utilidades.verificarElementoPresente(By.xpath(
-        "//*[@id='content']/table/tbody/tr[td[1][normalize-space(text())='" + mapUsuario
-            .get("nombreEmpleado") + "'] and td[2][normalize-space(text())='" + mapUsuario
-            .get("apellidoEmpleado") + "'] and td[3][normalize-space(text())='" + mapUsuario
-            .get("identificacionEmpleado") + "'] and td[4][normalize-space(text())='" + mapUsuario
+        "//*[@id='content']/table/tbody/tr[td[1][text()='" + mapUsuario
+            .get("nombreEmpleado") + "'] and td[2][text()='" + mapUsuario
+            .get("apellidoEmpleado") + "'] and td[3][text()='" + mapUsuario
+            .get("identificacionEmpleado") + "'] and td[4][text()='" + mapUsuario
             .get("nombreLider") + "']]")));
   }
 
